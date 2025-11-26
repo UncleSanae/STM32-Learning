@@ -57,8 +57,38 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define LED1_Pin GPIO_PIN_1
-#define LED1_GPIO_Port GPIOA
+#define R1_Pin GPIO_PIN_1
+#define R1_GPIO_Port GPIOA
+#define R2_Pin GPIO_PIN_2
+#define R2_GPIO_Port GPIOA
+#define R3_Pin GPIO_PIN_3
+#define R3_GPIO_Port GPIOA
+#define R4_Pin GPIO_PIN_4
+#define R4_GPIO_Port GPIOA
+#define R5_Pin GPIO_PIN_5
+#define R5_GPIO_Port GPIOA
+#define R6_Pin GPIO_PIN_6
+#define R6_GPIO_Port GPIOA
+#define R7_Pin GPIO_PIN_7
+#define R7_GPIO_Port GPIOA
+#define L1_Pin GPIO_PIN_1
+#define L1_GPIO_Port GPIOB
+#define L2_Pin GPIO_PIN_2
+#define L2_GPIO_Port GPIOB
+#define R8_Pin GPIO_PIN_8
+#define R8_GPIO_Port GPIOA
+#define L3_Pin GPIO_PIN_3
+#define L3_GPIO_Port GPIOB
+#define L4_Pin GPIO_PIN_4
+#define L4_GPIO_Port GPIOB
+#define L5_Pin GPIO_PIN_5
+#define L5_GPIO_Port GPIOB
+#define L6_Pin GPIO_PIN_6
+#define L6_GPIO_Port GPIOB
+#define L7_Pin GPIO_PIN_7
+#define L7_GPIO_Port GPIOB
+#define L8_Pin GPIO_PIN_8
+#define L8_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

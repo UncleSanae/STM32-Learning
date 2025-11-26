@@ -54,7 +54,18 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+const uint8_t text_frames[10][8] = {
+    {0xC3, 0xC3, 0xC3, 0xC3, 0xC3, 0xC3, 0x7E, 0x00}, // U
+    {0x00, 0x00, 0x5C, 0x66, 0x66, 0x66, 0x66, 0x00}, // n
+    {0x00, 0x00, 0x3C, 0x66, 0x60, 0x66, 0x3C, 0x00}, // c
+    {0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x18, 0x00}, // l
+    {0x00, 0x00, 0x3C, 0x66, 0x7E, 0x60, 0x3C, 0x00}, // e
+    {0x3C, 0x60, 0x60, 0x3C, 0x06, 0x06, 0x3C, 0x00}, // S
+    {0x00, 0x00, 0x3C, 0x06, 0x3E, 0x66, 0x3E, 0x00}, // a
+    {0x00, 0x00, 0x5C, 0x66, 0x66, 0x66, 0x66, 0x00}, // n
+    {0x00, 0x00, 0x3C, 0x06, 0x3E, 0x66, 0x3E, 0x00}, // a
+    {0x00, 0x00, 0x3C, 0x66, 0x7E, 0x60, 0x3C, 0x00}  // e
+};
 /* USER CODE END 0 */
 
 /**
@@ -87,21 +98,49 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
-
+  uint32_t last_switch_time = 0; // 上次切换字母的时间
+  int current_char_index = 0;    // 当前显示第几个字母 (0-9)
+  HAL_GPIO_WritePin(GPIOA, 0xFFFF,GPIO_PIN_SET);
+  HAL_GPIO_WritePin(GPIOA, 0xFFFF,GPIO_PIN_RESET);
   /* USER CODE END 2 */
-
+  
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    HAL_GPIO_TogglePin(LED1_GPIO_Port,LED1_Pin);
-    HAL_Delay(500);
+    // 每隔 800ms 切换一次字母
+    if (HAL_GetTick() - last_switch_time > 800) 
+    {
+        last_switch_time = HAL_GetTick(); // 更新时间戳
+        current_char_index++;             // 换下一个字母
+        //溢出设置
+        if (current_char_index >= 10) {
+            current_char_index = 0;
+        }
+    }
+    for(int i = 0; i < 8; i++)
+    {
+      //清空
+      HAL_GPIO_WritePin(GPIOA, 0xFFFF,GPIO_PIN_RESET);
+      //设置行
+      uint16_t row_select = 1 << (i + 1);
+      GPIOA->ODR = row_select;
+      //当前字母的行数据  
+      uint8_t row_data = text_frames[current_char_index][i];
+      //左移一列
+      uint16_t shifted_data = (uint16_t)row_data << 1;
+      //设置列数据
+      GPIOB->ODR = ~(shifted_data) | 0x0001;
+      //视觉暂留
+      HAL_Delay(1); 
+    }
+  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
-}
+
 
 /**
   * @brief System Clock Configuration
