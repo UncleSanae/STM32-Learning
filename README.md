@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://github.com/user-attachments/assets/4039f2cd-f828-490b-b8e7-520a24055ca9" width="600px">
   
-  # STM32-Learning Journey
+  # UncleSanae's-STM32-Learning-Journey
   
   ![STM32](https://img.shields.io/badge/Hardware-STM32F103C8T6-blue?style=for-the-badge&logo=stmicroelectronics)
   ![Language](https://img.shields.io/badge/Language-C%2FEmbedded_C-orange?style=for-the-badge)
