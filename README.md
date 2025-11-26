@@ -9,10 +9,7 @@
   ![IDE](https://img.shields.io/badge/IDE-Keil_MDK_5-green?style=for-the-badge)
   ![Config](https://img.shields.io/badge/Config-STM32CubeMX-0091BD?style=for-the-badge&logo=stmicroelectronics&logoColor=white)
   ![Sim](https://img.shields.io/badge/Sim-Proteus-FF4500?style=for-the-badge)
-  <p>记录我学习 STM32 嵌入式开发的历程</p>
-</div>
-
----
+  <p font=ZCOOL+KuaiLe>记录我学习 STM32 嵌入式开发的历程</p>
 
 ## 📖 简介
 
@@ -24,4 +21,10 @@
 * **IDE**: Keil uVision 5.38
 * **Config**: STM32CubeMX
 * **Simulation**: Proteus
+  </div>
+<div align="center">
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.herokuapp.com?font=ZCOOL+KuaiLe&weight=400&size=30&pause=1000&color=48C9B0&center=true&vCenter=true&width=435&lines=少女敲码中......" alt="Typing SVG" />
+</a>
+</div>
 
