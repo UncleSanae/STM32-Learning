@@ -1,0 +1,23 @@
+# Keil MDK Generated Files
+*.o
+*.d
+*.crf
+*.dep
+*.axf
+*.htm
+*.lnp
+*.sct
+*.lst
+*.map
+*.iex
+*.uvguix.*
+*.uvgui.*
+JLinkLog.txt
+*.bak
+
+# Folders to ignore
+Objects/
+Listings/
+DebugConfig/
+RTE/
+.vscode/
