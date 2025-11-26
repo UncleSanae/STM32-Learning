@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/4039f2cd-f828-490b-b8e7-520a24055ca9" width="600px">
+  <img src="https://github.com/user-attachments/assets/4039f2cd-f828-490b-b8e7-520a24055ca9" width="800px">
   
   # UncleSanae's-STM32-Learning-Journey
   
@@ -8,7 +8,7 @@
   ![IDE](https://img.shields.io/badge/IDE-Keil_MDK_5-green?style=for-the-badge)
   ![Status](https://img.shields.io/badge/Status-In_Progress-yellow?style=for-the-badge)
 
-  <p>记录我学习 STM32 嵌入式开发</p>
+  <p>记录我学习 STM32 嵌入式开发的历程</p>
 </div>
 
 ---
