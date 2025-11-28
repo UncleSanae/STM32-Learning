@@ -20,6 +20,10 @@
 #include "main.h"
 #include "gpio.h"
 #include "OLED.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -53,11 +57,76 @@ void SystemClock_Config(void);
 char buttonCheck(void);
 void Calculator_Init(void);
 void Calculator_Input(char key);
-
+double Calculate_Result(char* formula);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+#define MAX_STACK 20         
+double num_stack[MAX_STACK]; 
+char op_stack[MAX_STACK];  
+int num_top = -1;         
+int op_top = -1;
+void push_num(double val){ 
+    if(num_top < MAX_STACK-1) num_stack[++num_top] = val; 
+}
+double pop_num(){ 
+    return (num_top >= 0) ? num_stack[num_top--] : 0; 
+}
+double peek_num(){ 
+    return (num_top >= 0) ? num_stack[num_top] : 0; 
+}
+void push_op(char op){ 
+    if(op_top < MAX_STACK-1) op_stack[++op_top] = op; 
+}
+char pop_op(){ 
+    return (op_top >= 0) ? op_stack[op_top--] : 0; 
+}
+char peek_op(){ 
+    return (op_top >= 0) ? op_stack[op_top] : 0; 
+}
+int get_priority(char op){
+    if (op == '+' || op == '-') return 1;
+    if (op == '*' || op == '/') return 2;
+    return 0;
+}
+void do_calculation(){
+    double b = pop_num();
+    double a = pop_num();
+    char op = pop_op();
+    double res = 0;
+    switch(op) {
+        case '+': res = a + b; break;
+        case '-': res = a - b; break;
+        case '*': res = a * b; break;
+        case '/': res = (b != 0) ? (a / b) : 0; break;
+    }
+    push_num(res);
+}
+double Calculate_Result(char* formula){
+    num_top = -1;
+    op_top = -1;
+    int i = 0;
+    while(formula[i] != '\0'){
+        if((formula[i] >= '0' && formula[i] <= '9') || formula[i] == '.'){
+            char* end_ptr;
+            double val = strtod(&formula[i], &end_ptr);
+            push_num(val);
+            i = end_ptr - formula; 
+            continue;
+        }else if(formula[i] == '+' || formula[i] == '-' || formula[i] == '*' || formula[i] == '/'){
+            while(op_top >= 0 && get_priority(peek_op()) >= get_priority(formula[i])){
+                do_calculation();
+            }
+            push_op(formula[i]);
+        }
+        i++;
+    }
+    while(op_top >= 0){
+        do_calculation();
+    }
+    return num_stack[0];
+}
 char KEY_MAP[4][4] = {
     {'7', '8', '9', '/'},
     {'4', '5', '6', '*'},
@@ -68,6 +137,7 @@ char formula_buf[64];
 uint8_t buf_index = 0;
 uint32_t last_scan_time = 0;
 char key = ' ';
+
 
 /* USER CODE END 0 */
 
@@ -116,8 +186,10 @@ int main(void)
                 if(key == 'C'){
                     Calculator_Init();
                 }else if(key == '='){
-                    OLED_Clear();
-                    OLED_ShowString(1, 1, "Calculating..."); 
+                    double result = Calculate_Result(formula_buf);
+                    char result_str[20];
+                    sprintf(result_str, "=%g", result); 
+                    OLED_ShowString(2, 1, result_str); 
                 }else{
                     Calculator_Input(key);
                 }
