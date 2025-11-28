@@ -16,6 +16,7 @@
 "scientific_calculator\stm32f1xx_hal_flash_ex.o"
 "scientific_calculator\stm32f1xx_hal_exti.o"
 "scientific_calculator\system_stm32f1xx.o"
+"scientific_calculator\oled.o"
 --strict --scatter "Scientific_Calculator\Scientific_Calculator.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

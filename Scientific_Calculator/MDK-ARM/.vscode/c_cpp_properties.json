@@ -14,7 +14,8 @@
                 "D:\\Keil5\\ARM\\ARMCLANG\\include\\libcxx",
                 "c:\\Users\\31683\\Desktop\\Code\\STM32cubeXM\\Scientific_Calculator\\MDK-ARM",
                 "c:\\Users\\31683\\Desktop\\Code\\STM32cubeXM\\Scientific_Calculator\\Core\\Src",
-                "c:\\Users\\31683\\Desktop\\Code\\STM32cubeXM\\Scientific_Calculator\\Drivers\\STM32F1xx_HAL_Driver\\Src"
+                "c:\\Users\\31683\\Desktop\\Code\\STM32cubeXM\\Scientific_Calculator\\Drivers\\STM32F1xx_HAL_Driver\\Src",
+                "c:\\Users\\31683\\Desktop\\Code\\STM32cubeXM\\myUtils"
             ],
             "defines": [
                 "USE_HAL_DRIVER",
