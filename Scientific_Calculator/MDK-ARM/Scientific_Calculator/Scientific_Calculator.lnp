@@ -1,0 +1,22 @@
+--cpu Cortex-M3
+"scientific_calculator\startup_stm32f103xb.o"
+"scientific_calculator\main.o"
+"scientific_calculator\gpio.o"
+"scientific_calculator\stm32f1xx_it.o"
+"scientific_calculator\stm32f1xx_hal_msp.o"
+"scientific_calculator\stm32f1xx_hal_gpio_ex.o"
+"scientific_calculator\stm32f1xx_hal.o"
+"scientific_calculator\stm32f1xx_hal_rcc.o"
+"scientific_calculator\stm32f1xx_hal_rcc_ex.o"
+"scientific_calculator\stm32f1xx_hal_gpio.o"
+"scientific_calculator\stm32f1xx_hal_dma.o"
+"scientific_calculator\stm32f1xx_hal_cortex.o"
+"scientific_calculator\stm32f1xx_hal_pwr.o"
+"scientific_calculator\stm32f1xx_hal_flash.o"
+"scientific_calculator\stm32f1xx_hal_flash_ex.o"
+"scientific_calculator\stm32f1xx_hal_exti.o"
+"scientific_calculator\system_stm32f1xx.o"
+--strict --scatter "Scientific_Calculator\Scientific_Calculator.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "Scientific_Calculator.map" -o Scientific_Calculator\Scientific_Calculator.axf
